@@ -3,29 +3,29 @@ name: flow
 dependencies:
     - python==3.7.3
     - pip:
-        - scipy==1.1.0
-        - lxml==4.4.1
-        - six==1.11.0
+        - scipy
+        - lxml
+        - six
         - path.py
-        - python-dateutil==2.7.3
-        - pip>=18.0
-        - tensorflow==1.15.2
-        - setuptools==41.0.0
-        - plotly==2.4.0
-        - gym==0.14.0
-        - pyprind==2.11.2
-        - nose2==0.8.0
+        - python-dateutil
+        - pip
+        - tensorflow
+        - setuptools
+        - plotly
+        - gym
+        - pyprind
+        - nose2
         - cached_property
-        - joblib==0.10.3
+        - joblib
         - python3-distutils
         - libfreetype6-dev
         - libpng-dev
-        - matplotlib==3.4.3
+        - matplotlib
         - dill
         - lz4
-        - ray==0.8.0
+        - ray
         - setproctitle
         - psutil
         - opencv-python
-        - boto3==1.10.45
-        - redis~=2.10.6
+        - boto3
+        - redis
