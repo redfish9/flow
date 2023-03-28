@@ -1,5 +1,4 @@
 FROM continuumio/miniconda3:latest
-MAINTAINER Fangyu Wu (fangyuwu@berkeley.edu)
 
 # System
 RUN apt-get update && \
@@ -15,14 +14,14 @@ RUN cd ~ && \
     pip install tensorflow
 
 # Flow
-RUN cd ~ && \
-	git clone https://github.com/flow-project/flow.git && \
-    cd flow && \
-    git checkout v0.3.0 && \
-	pip install -e .
+COPY . /flow
+WORKDIR /flow
+RUN	pip install -e .
+
 
 # SUMO dependencies
-RUN apt-get install -y \
+RUN apt-get update && \
+	apt-get install -y \
 	cmake \
 	build-essential \
 	swig \
@@ -32,13 +31,14 @@ RUN apt-get install -y \
 	libfox-1.6-dev \
 	libxml2-dev \
 	libxslt1-dev \
-	openjdk-8-jdk
+	openjdk-11-jdk
+	# note that openjdk-8-jdk is removed from Ubuntu20.04
 
 # SUMO
 RUN cd ~ && \
 	git clone --recursive https://github.com/eclipse/sumo.git && \
 	cd sumo && \
-	git checkout cbe5b73 && \
+	# git checkout cbe5b73 && \
     mkdir build/cmake-build && \
 	cd build/cmake-build && \
 	cmake ../.. && \
@@ -46,7 +46,7 @@ RUN cd ~ && \
 
 # Ray/RLlib
 RUN cd ~ && \
-	pip install ray==0.6.2 \
+	pip install ray \
                 psutil
     
 # Startup process
